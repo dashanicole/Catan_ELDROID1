@@ -38,22 +38,6 @@ app.get('/users', (req, res) => {
   return res.status(200).json(users);
 });
 
-// POST route to handle login
-app.post('/login', (req, res) => {
-  const { username, password } = req.body; // Extract username and password from request body
-
-  // Find the user in the array
-  const user = users.find((user) => user.username === username && user.password === password);
-
-  if (user) {
-    // If user exists and credentials match
-    return res.status(200).json({ message: 'Login Accepted' });
-  } else {
-    // If user does not exist or credentials don't match
-    return res.status(401).json({ message: 'Login Failed' });
-  }
-});
-
 // Default route for root access (optional, adjust as needed)
 app.get('/', (req, res) => {
   res.send('Welcome to the Express server');
