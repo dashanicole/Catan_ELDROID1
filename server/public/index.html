@@ -1,57 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="ie-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>User Login</title>
-    <style>
-        body {
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-        .login-card {
-            border-radius: 10px;
-        }
-        .login-button {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            transition: background-color 0.3s ease;
-        }
-        .login-button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="w3-bar w3-red w3-padding">
-        <h3>USER LOGIN</h3>
-    </div>
-
-    <div class="login-container">
-        <form method="post" class="w3-white w3-card-4 login-card w3-animate-top w3-padding w3-border" action="/login">
-            <p>
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" class="w3-input" placeholder="Enter your username" required>
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="w3-input" placeholder="Enter your password" required>
-            </p>
-            <p>
-                <button type="submit" class="w3-button w3-blue login-button">LOGIN</button>
-            </p>
-        </form>
-    </div>
-
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="ie-edge">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<title>User Login</title>
+	</head>
+	<body style="background-color:#c0c0c0">
+		<div class="w3-bar w3-pink w3-container w3-padding">
+			<h3>USER LOGIN</h3>
+		</div>
+		<div class="w3-container w3-padding-16">
+			<form method="post" class="w3-white w3-card-4 w3-container w3-animate-top w3-padding w3-border" style="width:50%;margin:auto" action="/login">
+				<p>
+					<label>USERNAME</label><br>
+					<input type="text" name="username" class="w3-input">
+				</p>
+				<p>
+					<label>PASSWORD</label><br>
+					<input type="password" name="password" class="w3-input">
+				</p>
+				<input type="submit" class="w3-button w3-blue" value="LOGIN">
+			</form>
+		</div>
+	</body>
 </html>
