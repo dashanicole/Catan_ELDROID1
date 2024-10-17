@@ -6,20 +6,29 @@ const app = express();
 // Array of users for login purposes
 const users = [
   {
-    'username': 'admin',
-    'password': 'user',
-  },
-  {
     'username': 'hello',
     'password': 'world',
+	'image': '/images/hello.jpg'
+  },
+  {
+    'username': 'admin',
+    'password': 'user',
+	'image': '/images/admin.jpg'
   },
   {
     'username': 'dennis',
-    'password': 'durano',
+    'password': 'so',
+	'image': '/images/dennis.jpg'
   },
   {
-    'username': 'julio',
-    'password': 'so',
+    'username': 'durano',
+    'password': 'hello123!',
+	'image': '/images/durano.jpg'
+  },
+  {
+    'username': 'sample',
+    'password': 'user123!',
+	'image': '/images/sample.jpg'
   },
 ];
 

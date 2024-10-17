@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './screens/LoginScreen';
 import MainScreen from './screens/MainScreen';
+import DetailScreen from './screens/DetailScreen'; // Import the DetailScreen component
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,17 @@ const App = () => {
         <Stack.Screen 
           name="Main" 
           component={MainScreen} 
+          options={{
+            title: 'Catan, Diether D.',
+            headerStyle: { backgroundColor: 'red' },
+            headerTintColor: 'white', 
+            headerTitleStyle: { fontWeight: 'bold' }, 
+          }} 
+        />
+
+        <Stack.Screen 
+          name="Detail" 
+          component={DetailScreen} 
           options={{
             title: 'Catan, Diether D.',
             headerStyle: { backgroundColor: 'red' },

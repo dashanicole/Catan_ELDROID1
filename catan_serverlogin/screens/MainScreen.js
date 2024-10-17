@@ -6,10 +6,9 @@ const MainScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [showPasswordFor, setShowPasswordFor] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/users')
+    axios.get('http://localhost:5000/users') // Replace localhost with your actual IP address
       .then(response => {
         setData(response.data);
         setFilteredData(response.data);
@@ -28,8 +27,8 @@ const MainScreen = ({ navigation }) => {
     setSearchQuery(text);
   };
 
-  const handlePress = (index) => {
-    setShowPasswordFor(showPasswordFor === index ? null : index);
+  const handleUserPress = (user) => {
+    navigation.navigate('Detail', { user });
   };
 
   return (
@@ -53,11 +52,14 @@ const MainScreen = ({ navigation }) => {
         <FlatList 
           data={filteredData}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity onPress={() => handlePress(index)}>
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => handleUserPress(item)}>
               <View style={styles.listItemContainer}>
+                <Image 
+                  source={{ uri: `http://localhost:5000${item.image}` }} 
+                  style={styles.userIcon} 
+                />
                 <Text style={styles.listItem}>{item.username}</Text>
-                {showPasswordFor === index && <Text style={styles.passwordText}>{item.password}</Text>}
               </View>
             </TouchableOpacity>
           )}
@@ -102,14 +104,17 @@ const styles = StyleSheet.create({
     padding: 25,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
+    flexDirection: 'row', // Add this line to align icon and text properly
+    alignItems: 'center',  // Center align the items
   },
   listItem: {
     fontWeight: 'bold',
+    marginLeft: 15, // Add margin to space out the text from the image
   },
-  passwordText: {
-    marginTop: 5,
-    fontWeight: 'normal',
-    color: 'gray',
+  userIcon: {
+    width: 50, // Adjust size as needed
+    height: 50, // Adjust size as needed
+    borderRadius: 25, // Make it circular
   },
 });
 
