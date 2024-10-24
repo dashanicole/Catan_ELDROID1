@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block back_button %}
+	<a href="/" class="w3-button w3-pink" style="margin-right:10px; font-weight:bold; color:white; font-size: 20px;"><</a>
+{% endblock %}
+
+{% block content %}
+	{% with messages = get_flashed_messages()%}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="w3-panel w3-padding w3-amber">{{ message }}</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+
+	<table class="w3-table-all">
+		{% for user in userlist %}
+		<tr>
+			<td onclick="showUserDetails('{{ user['username'] }}', '{{ user['password'] }}')">{{ user['name'].upper() }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	
+	<div id="alertDialog" class="w3-modal" style="display:none;">
+		<div class="w3-modal-content w3-mobile w3-card-4 w3-round-xlarge w3-animate-right w3-padding" 
+			style="margin:auto; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50%;">
+			<header class="w3-container w3-pink">
+				<h3 id="modal-title">User Details</h3>
+			</header>
+			<div class="w3-container">
+				<p id="modal-message"></p>
+			</div>
+			<footer class="w3-container w3-padding-16 w3-center">
+				<button class="w3-button w3-blue w3-round" onclick="closeModal()">OK</button>
+			</footer>
+		</div>
+	</div>
+	
+	<script>
+		function showUserDetails(username, password) {
+			document.getElementById('modal-title').textContent = "User Details";
+			document.getElementById('modal-message').innerHTML = "\tUsername: " + username + "<br>\tPassword: " + password;
+			document.getElementById('alertDialog').style.display = 'block';
+		}
+		function closeModal() {
+			document.getElementById('alertDialog').style.display = 'none';
+		}
+	</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+	{% with messages = get_flashed_messages()%}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="w3-panel w3-padding w3-amber">{{ message }}</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	
+	<br>
+	<div class="w3-mobile w3-card-4 w3-round-xlarge w3-container w3-padding w3-animate-top" style="width:50%; margin:auto;">
+		<form action="/uservalidate" method="post">
+			<p>
+				<label>USERNAME</label>
+				<input type="text" name="username" class="w3-input w3-border">
+			</p>
+			<p>
+				<label>PASSWORD</label>
+				<input type="password" name="password" class="w3-input w3-border">
+			</p>
+			<p>
+				<input type="submit" value="LOGIN" class="w3-input w3-blue">
+			</p>		
+		</form>
+	</div>
+{% endblock %}
