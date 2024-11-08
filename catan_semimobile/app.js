@@ -1,36 +1,38 @@
-const express = require('express');
-let students=[];
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import JoinScreen from './screens/JoinScreen';
+import ChatScreen from './screens/ChatScreen';
 
-app = express();
-app.use(express.urlencoded({'extended':false}));
-app.use(express.json());
+const Stack = createStackNavigator();
 
-app.use(express.static("public"))
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Join">
+        <Stack.Screen
+          name="Join"
+          component={JoinScreen}
+          options={{
+            title: 'Catan, Diether D.',
+            headerStyle: { backgroundColor: 'red' },
+            headerTintColor: 'white',
+            headerTitleStyle: { fontWeight: 'bold' },
+          }}
+        />
+        <Stack.Screen
+          name="Chat"
+          component={ChatScreen}
+          options={{
+            title: 'Catan, Diether D.',
+            headerStyle: { backgroundColor: 'red' },
+            headerTintColor: 'white',
+            headerTitleStyle: { fontWeight: 'bold' },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
-app.get("/",(req,res)=>{
-	res.render("index.html")
-});
-
-app.get("/send",(req,res)=>{
-	let name = req.query.name;
-	console.log(name);
-	if (name){
-		students.push(name);
-		console.log(students)
-	}
-	res.send("New Student Added")
-});
-
-app.get("/studentlist",(req,res)=>{
-	res.send(students);	
-});
-
-app.get("/messages",function(res,res){
-	res.render("index.html")
-});
-
-
-
-app.listen("3000",()=>{
-	console.log("running at port 3000");
-});
+export default App;
